@@ -1,5 +1,4 @@
 import os
-import sqlite3
 import logging
 import streamlit as st
 from langchain.chains import create_history_aware_retriever, create_retrieval_chain
@@ -11,18 +10,10 @@ from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader
-from langchain_community.vectorstores import Chroma
-
+from langchain_community.vectorstores import FAISS  # Changed from Chroma to FAISS
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
-
-# Check SQLite version
-try:
-    conn = sqlite3.connect(':memory:')
-    logging.info(f"SQLite version: {sqlite3.sqlite_version}")
-except Exception as e:
-    logging.error(f"Error: {e}")
 
 # Load environment variables
 os.environ['HF_TOKEN'] = st.secrets["HF_TOKEN"]
@@ -45,7 +36,7 @@ def get_pdf_documents(uploaded_files):
 def create_vector_store(documents):
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=5000, chunk_overlap=500)
     splits = text_splitter.split_documents(documents)
-    vectorstore = Chroma.from_documents(documents=splits, embedding=embeddings)
+    vectorstore = FAISS.from_documents(documents=splits, embedding=embeddings)
     return vectorstore
 
 def create_retriever(vectorstore):
