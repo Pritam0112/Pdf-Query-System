@@ -9,4 +9,11 @@ chromadb==0.5.5
 huggingface_hub==0.24.5
 PyPDF2==3.0.1
 pypdf==4.3.1
+pymupdf
+langchain_chroma
+duckdb
+pandas
+mysql-connector-python
+SQLAlchemy
+sentence_transformers
 pysqlite3-binary
