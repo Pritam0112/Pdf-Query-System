@@ -1,4 +1,6 @@
 import os
+import sqlite3
+import logging
 import streamlit as st
 from langchain.chains import create_history_aware_retriever, create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
@@ -10,6 +12,16 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader
 from langchain.vectorstores import Chroma
+
+# Set up logging
+logging.basicConfig(level=logging.INFO)
+
+# Check SQLite version
+try:
+    conn = sqlite3.connect(':memory:')
+    logging.info(f"SQLite version: {sqlite3.sqlite_version}")
+except Exception as e:
+    logging.error(f"Error: {e}")
 
 # Load environment variables
 os.environ['HF_TOKEN'] = st.secrets["HF_TOKEN"]
