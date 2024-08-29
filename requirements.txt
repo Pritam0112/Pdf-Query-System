@@ -5,15 +5,9 @@ langchain-huggingface==0.0.3
 langchain-core==0.2.32
 langchain-groq==0.1.9
 langchain-text-splitters==0.2.2
-chromadb==0.5.5
 huggingface_hub==0.24.5
 PyPDF2==3.0.1
-pypdf==4.3.1
 pymupdf
-langchain_chroma
-duckdb
 pandas
-mysql-connector-python
-SQLAlchemy
 sentence_transformers
-pysqlite3-binary
+faiss-cpu
