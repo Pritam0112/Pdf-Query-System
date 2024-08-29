@@ -11,3 +11,4 @@ pymupdf
 pandas
 sentence_transformers
 faiss-cpu
+pypdf
