@@ -50,6 +50,8 @@ This project is a Streamlit-based web application that allows users to upload PD
 
 4. Once processed, you can start asking questions about the content of the PDFs in the main chat interface.
 
+   [Streamlit App](https://pdf-query-system-pritam-pohankar.streamlit.app/)
+
 ## Development
 
 This project uses:
